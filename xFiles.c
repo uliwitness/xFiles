@@ -20,15 +20,15 @@
 //	Prototypes
 // -----------------------------------------------------------------------------
 
-OSErr GetVRefNumAndDirIDFromPath(CharsHandle filePath, short *vRefNum, short *dirID);
-OSErr AppendIndFilenameInFolder(short vRefNum, short dirID, short dirIndex, CharsHandle dirPath);
+OSErr GetVRefNumAndDirIDFromPath(CharsHandle filePath, short *vRefNum, long *dirID);
+OSErr AppendIndFilenameInFolder(short vRefNum, long dirID, short dirIndex, CharsHandle dirPath);
 
 
 // -----------------------------------------------------------------------------
 //	GetVRefNumAndDirIDFromPath
 // -----------------------------------------------------------------------------
 
-OSErr GetVRefNumAndDirIDFromPath(CharsHandle filePath, short *vRefNum, short *dirID) {
+OSErr GetVRefNumAndDirIDFromPath(CharsHandle filePath, short *vRefNum, long *dirID) {
 	OSErr		err = noErr;
 	Str255		errStr = {0};
 	AliasHandle	alias = NULL;
@@ -88,7 +88,7 @@ OSErr GetVRefNumAndDirIDFromPath(CharsHandle filePath, short *vRefNum, short *di
 //	AppendIndFilenameInFolder
 // -----------------------------------------------------------------------------
 
-OSErr AppendIndFilenameInFolder(short vRefNum, short dirID, short dirIndex, CharsHandle dirPath) {
+OSErr AppendIndFilenameInFolder(short vRefNum, long dirID, short dirIndex, CharsHandle dirPath) {
 	CInfoPBRec	catInfo = {0};
 	Str255		fileNameBuffer = {0};
 	Str255		errStr = {0};
@@ -152,7 +152,7 @@ void xcmdmain(void)
 	CInfoPBRec catInfo = {0};
 	Str255 		errStr = {0};
 	OSErr 		err = noErr;
-	short 		dirID = 0;
+	long 		dirID = 0;
 	short 		fRefNum = 0;
 	short 		vRefNum = 0;
 	short 		dirIndex = 0;
@@ -167,7 +167,7 @@ void xcmdmain(void)
 		AppendReturnValue("\pSyntax: put|get xFiles(<folder path>)");
 		return;
 	} else if (strcmp("!", *folderPath) == 0) {
-		AppendReturnValue("\p(c) Copyright 2021 by Uli Kusterer, all rights reserved.");
+		AppendReturnValue("\p1.1, (c) Copyright 2021 by Uli Kusterer, all rights reserved.");
 		return;
 	}
 	
