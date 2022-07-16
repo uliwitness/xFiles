@@ -11,5 +11,3 @@ To build this, you need
   to copy the `.rsrc` files back from the data fork into the resource fork, and
   to convert the source files back from UTF8 with LF to MacRoman with CR line endings.
   (Its "Revert" button can be used to do this)
-
-The completed app should run as far back as System 6.
